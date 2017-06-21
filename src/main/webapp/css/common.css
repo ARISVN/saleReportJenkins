@@ -1,0 +1,430 @@
+/*Font style*/
+
+.btn-grey {
+	background: #606059;
+	color: #fff;
+}
+
+.btn-grey:hover {
+	background: #606059;
+	opacity: 0.8;
+}
+
+.text-red {
+	color: #d63633;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.tab-menu a {
+	color: #000;
+}
+
+/* Base style */
+
+.cnt-center {
+	text-align: center;
+}
+
+.cnt-right {
+	text-align: right;
+}
+
+.item-left {
+	float: left;
+}
+
+.cnt-left {
+	text-align: left;
+}
+
+.item-right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.bl-hide {
+	display: none;
+}
+
+.mg-bottom {
+	margin-bottom: 30px;
+}
+
+/*Common*/
+#side-panel {
+	padding-top: 15px;
+}
+
+.btn {
+	border: 1px solid #5e5b5b;
+	padding: 5px 10px;
+}
+
+.btn-similar {
+	width: 80px;
+	margin-left: 20px;
+}
+
+.btn-white {
+	background: #fff;
+}
+
+.btn-white:hover,
+.btn.active {
+	background: #606059;
+	color: #fff;
+}
+
+.btn:hover {
+	cursor: pointer;
+}
+
+.popup {
+	display: none;
+	font-size: 13px;
+	padding: 0;
+}
+
+.popup .bl-item {
+	/*width: 81%;*/
+}
+
+table {
+	width:100%;
+}
+
+table.listData {
+	margin-top: 3em;
+}
+
+table.dataTable.no-footer {
+	border: 1px solid #111;
+}
+
+table.dataTable thead th.check-box,
+table.dataTable thead th.stt {
+	padding: 10px 5px;
+}
+
+.chart {
+	border: 1px solid #111;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+#barChart {
+	margin-top: 10px;
+}
+
+.jqplot-table-legend {
+	width: auto;
+}
+
+.jqplot-table-legend-label:hover {
+	cursor: pointer;
+}
+
+.dataTables_wrapper select {
+	width: auto;
+}
+
+.bl-block {
+	margin: 2% 3%;
+}
+
+.bl-block-half {
+	width: 50%;
+}
+
+form .item-btn-group {
+	height: auto!important;
+	margin-bottom: 0 !important;
+}
+
+form .item {
+	margin-bottom: 1.5%;
+	height: 46px;
+}
+
+form .item-radio {
+	height: 40px !important;
+}
+
+.popup form .item-radio {
+	margin-bottom: 2px !important;
+}
+
+form .item.middle-block {
+	width: 100%;
+}
+
+.middle-block {
+	display: inline-block;
+}
+
+.bl-item {
+	width: 70%;
+}
+
+.middle-block .bl-item {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.panel {
+	border: 1px solid transparent;
+	border-color: #676767;
+}
+
+.panel-heading {
+	background-color: #66665e;
+	color: #fff;
+	padding: 12px 20px;
+}
+
+.popup .panel-heading {
+	padding: 9px 20px;
+}
+
+.panel-title {
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 0;
+	margin-bottom: 0;
+	cursor: pointer;
+}
+
+.panel-body {
+	background-color: #F0F0F0;
+}
+
+input {
+	padding: 0 8px;
+	border: 1px solid #5e5b5b;
+	border-radius: 3px;
+
+}
+
+input[type="text"] {
+	width: 100%;
+	height: 30px;
+}
+
+input#appName {
+	width: 241px;
+}
+
+select {
+	width: 50%;
+	height: 30px;
+	padding: 0 8px;
+	border: 1px solid #5e5b5b;
+	border-radius: 3px;
+}
+
+input[type="button"] {
+	width: 80px;
+	cursor: pointer;
+}
+
+.bl-block input[type="radio"] {
+	margin-left: 20px;
+	padding-right: 5px;
+	cursor: pointer;
+}
+
+.bl-block input[type="radio"].first {
+	margin-left: 0px;
+}
+
+/*.bl-block .item input[type="button"] {*/
+	/**/
+	/*margin-top: 10px;*/
+/*}*/
+
+.bl-block input[type="button"].first {
+	margin-left: 0px;
+}
+
+.label {
+	color: #606059;
+	width: 27%;
+	margin-right: 3%;
+}
+
+.middle-block .label {
+	vertical-align: middle;
+	margin-top: 0;
+	display: inline-block;
+}
+
+.text-noti {
+	position: absolute;
+	top: 29px;
+}
+
+.text-noti-radio {
+	top: 18px;
+}
+
+label.title {
+	width: 165px;
+}
+
+label.detail {
+	font-weight: normal;
+}
+
+label span.text-red {
+	margin-left: 4px;
+}
+
+.text-noti {
+	display: block;
+	margin-top: 5px;
+}
+
+.half-block {
+	width: 30%;
+	margin-right: 3%;
+}
+
+.bl-row {
+	margin-bottom: 20px;
+}
+
+#btn-getData {
+	margin-bottom: 20px;
+}
+
+.appIdHide {
+	display: none;
+}
+
+/*datetimepicker*/
+.datetimepicker {
+	background: url(datepicker.png) no-repeat scroll 99% 7px;
+	cursor: pointer;
+}
+
+input.datetimepicker {
+	width: 241px;
+}
+
+.xdsoft_datetimepicker .xdsoft_datepicker {
+	width: 333px;
+}
+
+/*fancybox*/
+.fancybox-close {
+	top: 0;
+	right: 0;
+}
+
+.fancybox-skin {
+	padding: 0 !important;
+}
+
+.fancybox-inner {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+/*tab style*/
+
+.tab-content-list {
+	margin-top: 40px;
+}
+
+.tab {
+	display: none;
+}
+
+.tab-active {
+	display: block !important;
+}
+
+.tab-menu a {
+	margin-right: 2px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+.tab-menu a.active {
+	color: #000;
+	cursor: default;
+	background-color: #fff;
+	border: 1px solid #5e5b5b;
+	font-weight: bold;
+}
+
+/*Hide logger console*/
+#yui-logreader {
+	display: none;
+}
+
+/*notifycation style*/
+.notifyjs-corner {
+	margin: 0 !important;
+	z-index: 10500 !important;
+}
+
+.notifyjs-wrapper {
+	width: 350px !important;
+	height: 200px !important;
+}
+
+.notifyjs-bootstrap-base {
+	border-color: transparent !important;
+	border-radius: 2px !important;
+}
+
+/*responsive*/
+
+@media (max-width: 1600px) {
+	.bl-block-half {
+		width: 70%;
+	}
+}
+
+@media (max-width: 1300px) {
+	.bl-block-half {
+		width: 100%;
+	}
+
+	.bl-block {
+		padding: 3%;
+		margin: 0;
+	}
+}
+
+@media (max-width: 750px) {
+	#main-panel {
+		float: none;
+		padding: 0px 15px;
+	}
+}
+
+@media (max-width: 500px) {
+	input#appName {
+		width: 100%;
+	}
+
+	input.datetimepicker {
+		width: 100%;
+	}
+}
+
+#application-management-datatable_wrapper,
+table.dataTable {
+	clear: none !important;
+}

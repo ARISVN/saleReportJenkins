@@ -1,0 +1,90 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
+
+	<j:set var="url" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+
+    <link rel="stylesheet" type="text/css" href="${url}/component/fancy_box/jquery.fancybox.css"/>
+    <link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/common.css"/>
+
+    <script type="text/javascript" language="javascript" src="${url}/js/jquery-latest.min.js"></script>
+    <script type="text/javascript" language="javascript" src="${url}/component/fancy_box/jquery.fancybox.js"></script>
+    <script type="text/javascript" language="javascript" src="${url}/component/fancy_box/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.js"></script>
+	<script src="${url}/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/component/jquery.validate.js"></script>
+
+<l:layout title="Jenkins Plugin" norefresh="true">
+    <!--Load side bar-->
+    <j:include uri="sidebar.jelly"/>
+
+	<l:main-panel>
+  <div class="block" id="createApp">
+               <form id="add-item"  action="/jenkins/sale-report/application-management/save-item" method="post">
+                   <div class="panel">
+                     <div class="panel-heading">
+                         <h3 class="panel-title">Add Item</h3>
+                     </div>
+                     <div class="panel-body">
+                         <div class="bl-block bl-block-half">
+                            <div class="item middle-block">
+                               <div class="label">
+                                  <label for="appName">Application Name<span class="text-red">(*)</span></label>
+                               </div>
+                               <div class="bl-item">
+                                  <select id="appName" name="appName" type="text" placeholder="Select app" >
+                                    <option value="">--Select Application name--</option>
+                                      <j:forEach items="${it.appList}" var="app">
+                                         <option data="${app.type}" value="${app.appId}"> ${app.appName}</option>
+                                      </j:forEach>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="item middle-block item-radio">
+                               <div class="label">
+                                  <label>Type<span class="text-red">(*)</span></label>
+                               </div>
+                               <div id="div_type" class="bl-item">
+                                  <input type="hidden" id="type_os" value="${it.appType}"/>
+                                  <input class="first" name="type" id="type_ios" type="radio" value="IOS" />IOS
+                                  <input name="type" type="radio" id="type_android" value="Android" />Android
+                               </div>
+                            </div>
+                            <div class="item middle-block">
+                               <div class="label">
+                                  <label for="packages">Packages Name or SKU<span class="text-red">(*)</span></label>
+                               </div>
+                               <div class="bl-item">
+                                  <input id="packages" name="packages" type="text" />
+                               </div>
+                            </div>
+                            <div class="item middle-block">
+                               <div class="label">
+                                  <label for="itemName">Item name<span class="text-red">(*)</span></label>
+                               </div>
+                               <div class="bl-item">
+                                  <input id="itemName" name="itemName" type="text" />
+                               </div>
+                            </div>
+                            <div class="item cnt-right item-btn-group">
+                               <input id="btn_reset" type="button" value="Reset" class="btn btn-grey btn-similar" />
+                               <input id="btn_create" type="submit" value="Create"  class="btn btn-grey btn-similar"/>
+                            </div>
+                         </div>
+                     </div>
+                   </div>
+               </form>
+            </div>
+    <!--end -->
+		<script src="${url}/js/ApplicationManagement/additem.js"></script>
+        <!-- datatable -->
+        <link rel="stylesheet" type="text/css" href="${url}/datatables/css/jquery.dataTables.min.css"/>
+        <script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.dataTables.min.js"></script>
+        <!-- script common -->
+        <script type="text/javascript" language="javascript" src="${url}/js/script-menu.js"></script>
+	</l:main-panel>	
+ </l:layout>	
+</j:jelly>

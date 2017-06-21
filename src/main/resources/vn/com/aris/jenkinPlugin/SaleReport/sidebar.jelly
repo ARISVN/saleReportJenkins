@@ -1,0 +1,31 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
+    <l:side-panel>
+        <div id="cssmenu">
+            <ul>
+                <li class='has-sub'>
+                    <a href="#"><span>Application Management</span></a>
+                    <ul>
+                        <li><a href="../application-management/new"><span>Create new application</span></a></li>
+                        <li><a href="../application-management/add-item"><span>Add Item for application</span></a></li>
+                        <li class='last'><a href="../application-management"><span>List Application</span></a></li>
+                    </ul>
+                </li>
+                <!--<li class='has-sub'>
+                    <a href="#"><span>Application Details</span></a>
+                    <ul>
+                        <li><a href="#"><span>Application Details</span></a></li>
+                        <li class='last'><a href="#"><span>Item management</span></a></li>
+                    </ul>
+                </li>-->
+                <li class='has-sub last'>
+                    <a href="#"><span>Sale statistics</span></a>
+                    <ul>
+                        <li><a href="../report-statistc"><span>Display sale report</span></a></li>
+                        <!--<li class='last'><a href="#"><span>Export data to CSV</span></a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </l:side-panel>
+</j:jelly>

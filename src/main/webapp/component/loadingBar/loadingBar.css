@@ -1,0 +1,46 @@
+.loading-bar {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: url('images/bg.png') repeat;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.loading-bar .loading-overplay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  height: 67px;
+}
+
+.loading-bar .loading-spinner {
+  color: #fff;
+}
+.loading-bar .loading-icon {
+  font-size: 4.8125em;
+  line-height: 5.25em;
+  vertical-align: middle;
+  background: url('images/loading.gif');
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  text-align: center;
+}
+.loading-bar .loading-text {
+  font-size: 0.875em;
+  line-height: 1.3125em;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.loading-bar .loading-text:after {
+  content: "...";
+}

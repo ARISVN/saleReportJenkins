@@ -1,0 +1,79 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout" xmlns:f="/lib/form">
+
+	<j:set var="url" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+
+    <link rel="stylesheet" type="text/css" href="${url}/component/fancy_box/jquery.fancybox.css"/>
+    <link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/common.css"/>
+
+	<link rel="stylesheet" type="text/css" href="${url}/component/jquery.datetimepicker.css"/>
+    <script type="text/javascript" language="javascript" src="${url}/js/jquery-latest.min.js"></script>
+	<script src="${url}/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/component/jquery.validate.js"></script>
+
+	
+<l:layout title="Jenkins Plugin" norefresh="true">
+   <!--Load side bar-->
+   <j:include uri="sidebar.jelly"/>
+
+	<l:main-panel>
+		<div class="block" id="createApp">
+               <f:form name="formSubmit" method="POST" action="save-application">
+                  <div class="panel">
+                     <div class="panel-heading">
+                        <h3 class="panel-title">Create new application</h3>
+                     </div>
+                     <div class="panel-body">
+                        <div class="bl-block bl-block-half">
+                           <div class="item middle-block">
+                              <div class="label">
+                                 <label for="appName">Application Name<span class="text-red">(*)</span></label>
+                              </div>
+                              <div class="bl-item">
+                                 <input name="appName" type="text" id="appName" maxlength="250"/>
+                              </div>
+                           </div>
+                           <div class="item middle-block">
+                              <div class="label">
+                                 <label for="resetDate">Release Date<span class="text-red">(*)</span></label>
+                              </div>
+                              <div class="bl-item">
+                                 <input class="datetimepicker" name="releaveDate" id="releaveDate" type="text" maxlength="10"/>
+                              </div>
+                           </div>
+                           <div class="item middle-block">
+                              <div class="label">
+                                 <label for="packages">Packages Name or SKU<span class="text-red">(*)</span></label>
+                              </div>
+                              <div class="bl-item">
+                                 <input name="packages" type="text" id="packages" maxlength="100" />
+                              </div>
+                           </div>
+                           <div class="item middle-block item-radio">
+                              <div class="label">
+                                 <label>Type<span class="text-red">(*)</span></label>
+                              </div>
+                              <div class="bl-item">
+                                 <input name="type" type="radio" value="2" class="first IOS" checked="true" />IOS
+                                 <input name="type" type="radio" value="1" class="android" />Android
+                              </div>
+                           </div>
+                           <div class="item cnt-right item-btn-group">
+                              <input type="button" value="Reset" id="btnReset" class="btn btn-grey btn-similar" />
+                              <input type="submit" value="Create"  class="btn btn-grey btn-similar" id="submit" />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </f:form>
+            </div>
+        <!-- script common -->
+        <script type="text/javascript" language="javascript" src="${url}/js/script-menu.js"></script>
+	
+        <script type="text/javascript" language="javascript" src="${url}/js/ApplicationManagement/new.js"></script>
+	</l:main-panel>	
+ </l:layout>	
+</j:jelly>

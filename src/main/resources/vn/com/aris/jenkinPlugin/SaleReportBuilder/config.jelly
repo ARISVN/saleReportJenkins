@@ -1,0 +1,231 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <!--
+    This jelly script is used for per-project configuration.
+
+    See global.jelly for a general discussion about jelly script.
+  -->
+
+  <!--
+    Creates a text field that shows the value of the "name" property.
+    When submitted, it will be passed to the corresponding constructor parameter.
+  -->
+
+
+
+
+
+
+
+
+
+
+  
+  <f:entry title="Host">
+    <f:textbox value="" id="host" name="hideErr"/>
+  </f:entry>
+  <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Host is require</label></f:entry>
+  
+  <f:entry title="Port" >
+    <f:textbox value="" id="port" name="hideErr"/>
+  </f:entry>
+  <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Port is require</label></f:entry>
+  <f:entry title="Name Database" >
+    <f:textbox value="" id="name_db" name="hideErr"/>
+ </f:entry>
+ <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Name Database is require</label></f:entry>
+  <f:entry title="User Name">
+    <f:textbox value="" id="user_name" name="hideErr"/>
+  </f:entry>
+  <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">User Name is require</label></f:entry>
+  <f:entry title="PassWord" >
+    <f:password value="" id="pass_name" name="hideErr"/>
+  </f:entry>
+  <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">PassWord is require</label></f:entry>
+  
+  
+ <f:entry title="Google Path" >
+    <f:textbox value="" id="google_path" name="hideErr"/>
+ </f:entry>
+<f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Google Path is require</label></f:entry>
+
+ <f:entry title="Google Data Path" >
+    <f:textbox value="" id="gg_data_path" name="hideErr"/>
+ </f:entry>
+ <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Google Data Path is require</label></f:entry>
+ 
+ <f:entry title="Google Number" >
+    <f:textbox value="" id="gg_number" name="hideErr"/>
+ </f:entry>
+ <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Google Number is require</label></f:entry>
+    
+ <f:entry title="Apple Path" >
+    <f:textbox value="" id="app_path" name="hideErr"/>
+ </f:entry>
+ <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Apple Path is require</label></f:entry>
+ 
+  <f:entry title="Apple Vendor Id" >
+    <f:textbox value="" id="app_vender_id" name="hideErr"/>
+ </f:entry>
+ <f:entry title="" style="color:red;display:none"><label style="color:red;display:none" name="showErr">Apple Vendor Id is require</label></f:entry>
+ <f:entry title="" >
+    <f:textbox value="" id="hideConfig" style="display:none"/>
+ </f:entry> 
+<f:entry title="">
+    <input type="button" value="Reset" class="btn btn-grey" id="btnRs" onClick="resetForm();"/>
+    <input type="button" value="Save" class="btn btn-grey" id="btnSave" onClick="callAjax();"/>
+</f:entry>
+
+<j:set var="url" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type="text/javascript" language="javascript" src="${url}/component/notification/notify.js"></script>
+<script type="text/javascript" language="javascript" src="${url}/component/jquery.validate.js"></script>
+<script type="text/javascript">
+	$.noConflict();
+	function callAjax() {
+	   if(validateForm()){
+	      var url= getPathUrl();
+		  url+="sale-report/config/saveOrUpdateInfoconfig";
+		    jQuery.ajax({
+				url : url,
+				data : {
+						"user_name" : jQuery("#user_name").val(),
+						"pass_name": jQuery("#pass_name").val(),
+						"host":jQuery("#host").val(),
+						"port":jQuery("#port").val(),
+						"name_db":jQuery("#name_db").val(),
+						"google_path":jQuery("#google_path").val(),
+						"gg_data_path":jQuery("#gg_data_path").val(),
+						"gg_number":jQuery("#gg_number").val(),
+						"app_path":jQuery("#app_path").val(),
+						"app_vender_id":jQuery("#app_vender_id").val()
+				},
+				type : "POST",
+				success : function(result) {
+					console.log(result);
+					//disablAllField();
+					jQuery.notify("Update Successful!", "success", {
+							autoHide: true,
+							autoHideDelay: 5000,
+							showDuration: 2000,
+							hideDuration: 2000
+					});
+				}
+			});
+	    }
+	   
+	}
+	
+	function resetForm(){
+	   var status = jQuery("#btnSave").val();
+	   if(status==="Save"){
+	     console.log(jQuery("#btnSave").val());
+	     var result = jQuery("#hideConfig").val();
+	     fillDataFromResultReponse(result);
+	     hideAllFieldErr();
+	   }
+	}
+	function getPathUrl(){
+	   var url = location.href;
+	   var indexOf = url.indexOf("job");
+	   var path = url.substring(0,indexOf);
+	   return path;
+	}
+	function hideAllFieldErr(){
+		var a = jQuery('[name=showErr]');
+		a.each(function( index ) {
+        jQuery(this).hide();
+       });
+	}
+	function validateForm(){
+	  var a = jQuery('[name=showErr]');
+	  var b = jQuery('[name=hideErr]');
+	  var rs=true;
+	  b.each(function( index ) {
+        if(jQuery(this).val().trim().length===0){
+          a[index].show();
+          rs=false;
+        }
+        else{
+          a[index].hide();
+        }
+      });
+      return rs;
+	}
+	function disablAllField(){
+	            jQuery("#user_name").prop('disabled', true);
+				jQuery("#pass_name").prop('disabled', true);
+				jQuery("#host").prop('disabled', true);
+				jQuery("#port").prop('disabled', true);
+				jQuery("#name_db").prop('disabled', true);
+				jQuery("#google_path").prop('disabled', true);
+				jQuery("#gg_data_path").prop('disabled', true);
+				jQuery("#gg_number").prop('disabled', true);
+				jQuery("#app_path").prop('disabled', true);
+				jQuery("#app_vender_id").prop('disabled', true);
+				//jQuery("#btnSave").prop('value', 'Edit');
+	}
+	
+	function enableAllField(){
+	       jQuery("#user_name").prop('disabled', false);
+		   jQuery("#pass_name").prop('disabled', false);
+		   jQuery("#host").prop('disabled', false);
+		   jQuery("#port").prop('disabled', false);
+		   jQuery("#name_db").prop('disabled', false);
+		   jQuery("#google_path").prop('disabled', false);
+		   jQuery("#gg_data_path").prop('disabled', false);
+		   jQuery("#gg_number").prop('disabled', false);
+		   jQuery("#app_path").prop('disabled', false);
+		   jQuery("#app_vender_id").prop('disabled', false);
+	}
+	jQuery(document).ready(function() {
+		disablAllField();
+	    getDataFromFileConfig();
+	      jQuery( "[name=hideErr]" ).keyup(function() {
+            if(jQuery(this).val().trim().length===0){
+                var zzz=jQuery(this);
+                 var xxx= zzz.parent().parent().next().next();
+                 var ccc= xxx.children()[2];
+                 jQuery(ccc).children().show();
+             }
+              else{
+                 var zzz=jQuery(this);
+                 var xxx= zzz.parent().parent().next().next();
+                 var ccc= xxx.children()[2];
+                 jQuery(ccc).children().hide();
+                 
+             }
+        })
+	});
+	function getDataFromFileConfig() {
+		   var url= getPathUrl();
+		   url+="sale-report/config/getDataConfigSaleReport";
+		jQuery.ajax({
+			url : url,
+			type : "POST",
+			success : function(result) {
+				console.log(result);
+				debugger;
+				fillDataFromResultReponse(result);
+				jQuery("#hideConfig").val(result);
+				//disablAllField();
+				enableAllField();
+			}
+		});
+	}
+	function fillDataFromResultReponse(result){
+	var valueField= result.split(",")
+				jQuery("#user_name").val(valueField[9]);
+				jQuery("#pass_name").val(valueField[7]);
+				jQuery("#host").val(valueField[5]);
+				jQuery("#port").val(valueField[8]);
+				jQuery("#name_db").val(valueField[6]);
+				jQuery("#google_path").val(valueField[4]);
+				jQuery("#gg_data_path").val(valueField[2]);
+				jQuery("#gg_number").val(valueField[3]);
+				jQuery("#app_path").val(valueField[0]);
+				jQuery("#app_vender_id").val(valueField[1]);
+	}
+</script>
+    
+</j:jelly>

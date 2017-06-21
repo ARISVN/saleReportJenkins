@@ -1,0 +1,253 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout" xmlns:f="/lib/form">
+
+	<j:set var="url" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+	<link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${url}/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/multiple-select.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/sale-report.css"/>
+	<script src="${url}/js/app.js"></script>
+	
+	<script type="text/javascript" src="${url}/js/jquery.multiple.select.js"></script>
+
+
+	<!-- datatable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" type="text/css" />
+	<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+	<!-- jqplot library -->
+	<script language="javascript" type="text/javascript" src="${url}/jqplot/jquery.jqplot.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${url}/jqplot/jquery.jqplot.min.css" />
+
+
+	<!-- bar chart -->
+	<script type="text/javascript" src="${url}/jqplot/plugins/jqplot.highlighter.js"></script>
+	<script type="text/javascript" src="${url}/jqplot/plugins/jqplot.cursor.js"></script>
+	<script type="text/javascript" src="${url}/jqplot/plugins/jqplot.dateAxisRenderer.js"></script>
+	
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+	<script class="include" type="text/javascript" src="${url}/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+
+	<script type="text/javascript" src="${url}/js/script-menu.js"></script>
+
+	<script type="text/javascript" src="${url}/js/datepicker.js"></script>
+	<script type="text/javascript" src="${url}/js/saleReport/saleReport.js"></script>
+
+<l:layout title="Jenkins Plugin" norefresh="true">
+	<j:include uri="sidebar.jelly"/>
+	<!--Load side bar-->
+	<l:main-panel>
+		<div class="block" id="saleReport">
+		<input type="hidden" id= "totalItemPerPage" value="${it.totalItemPerPage}"/>
+		<input type="hidden" id= "minAppReleaseDate" value="${it.reportStatisticDTO.minAppReleaseDate}"/>
+			<f:form id="frmSale" name="frmSale" action="export-csv" method="POST">
+				<div class="panel">
+                     <div class="panel-heading">
+                        <h3 class="panel-title"><span id="statisticNameDisplay">Application</span> Statistics</h3>
+                     </div>
+					 <div class="panel-body">
+						 <div class="bl-block sale-report-bl middle-block">
+							 <div class="bl-row middle-block">
+								 <div class="half-block mid-bl middle-block">
+									 <div class="label mid-bl">
+										 <label>Statistics<span class="text-red"></span></label>
+									 </div>
+									 <div class="mid-bl sm-block mode-time">
+										 <select name="statisticType" id="statisticType">
+											 <f:option value="1" >Install</f:option>
+										 </select>
+										 <span class="text-red text-noti">This field is required</span>
+									 </div>
+								 </div>
+
+								 <div class="mid-bl half-block middle-block">
+								 </div>
+							 </div>
+							 <div class="bl-row middle-block">
+								 <div class="half-block mid-bl middle-block">
+									 <div class="label mid-bl">
+										 <label>Select time<span class="text-red"></span></label>
+									 </div>
+									 <div class="mid-bl sm-block mode-time">
+										 <select name="timeType" id="timeType">
+											  <f:option value="1" >Year</f:option>
+											 <f:option value="2" selected="true">Month</f:option>
+											 <f:option value="3" >Week</f:option>
+											 <f:option value="4" >Range</f:option>
+											 <f:option value="5" >All Time</f:option>                      
+										 </select>
+										 <span class="text-red text-noti">This field is required</span>
+									 </div>
+								 </div>
+								 <div class="mid-bl half-block middle-block">
+								 </div>
+							 </div>
+							 <div class="bl-row">
+								 <div class="two-block mid-bl half-block middle-block middle-block-date">
+									 <div class="label mid-bl">
+										 <label><span class="ttl-date">Date</span><span class="text-red">(*)</span></label>
+									 </div>
+									 <div id="date1" class="date mid-bl">
+										 <input class="datetimepicker" name="dateFrom" type="text" id="dateFrom" value="YYYY/MM/DD"></input>
+										 <span class="text-red text-noti">This field is required</span>
+									 </div>
+								 </div>
+								 <div class="mid-bl half-block middle-block middle-block-date">
+									 <div id="date2" class="date mid-bl">
+										 <input class="datetimepicker" name="dateTo" id="dateTo" type="text" value="YYYY/MM/DD"/>
+										 <span class="text-red text-noti">This field is required</span>
+									 </div>
+								 </div>
+							 </div>
+
+							 <div class="bl-row middle-block">
+								 <div class="mid-bl half-block middle-block">
+									 <div class="label mid-bl">
+										 <label><span id="appItemComboLbl">Application</span><span class="text-red">(*)</span></label>
+									 </div>
+									 <div class="mid-bl sm-block mode-time">
+										 <div id="mutliSelect">
+											 <select id="selectedApp" multiple="multiple">
+											 </select>
+										 </div>
+										 <span class="text-red text-noti">This field is required</span>
+									 </div>
+								 </div>
+								 <div class="mid-bl half-block middle-block">
+								 </div>
+							 </div>
+
+							 <div class="bl-row middle-block bl-row-custom">
+								 <div class="mid-bl half-block middle-block bl-app-name">
+									 <div class="label mid-bl ttl-app-name">
+										 <label>Selected <span id="appItemSelectedLbl">Applications</span></label>
+									 </div>
+									 <div class="mid-bl sm-block mode-time info-app-name">
+										 <span class="appName"></span>
+										 <span style="display:none" class="appNameHide"></span>
+									 </div>
+								 </div>
+							 </div>
+							 <div class="bl-row cnt-left bl-row-custom">
+								 <div class="btn-group btn-chart">
+									 <input type="button" value="Reset" class="btn btn-grey" id="btnRs"/>
+									 <input type="button" value="Draw Chart" class="btn btn-grey" id="btnChart"/>
+									 <input type="hidden" id="appId" name="appId" />
+									 <input type="hidden" id="itemId" name="itemId" />
+									 <input type="hidden" id="viewType" name="viewType" value="1"/>
+									 <input type="hidden" id="chartType" name="chartType"/>
+									 <input type="hidden" name="mode" id="modeInput"/>
+									 <input type="hidden" name="appName" id="appNameInput"/>
+									 <input type="hidden" name="dateFromHidden" id="dateFromHidden"/>
+									 <input type="hidden" name="dateToHidden" id="dateToHidden"/>
+									 <input type="hidden" name="skipSaveHiddenDate" id="skipSaveHiddenDate"/>
+									 <input type="hidden" name="exportCsv" id="exportCsv" value="true"/>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
+                  </div>
+                  <div class="toolbar">
+                      <div class="item-left">
+                          <div class="fc-button-group item-left">
+                              <button type="button" id="btnPrev" class="prev-button btn btn-white"><span class="icon icon-left">&lt;</span></button>
+                              <button type="button" id="btnNext" class="next-button btn btn-white"><span class="icon icon-right">&gt;</span>
+                              </button>
+                          </div>
+                          <button type="button" style="display:none" class="today-button btn item-right btn-white active">Today</button>
+                          <div class="clear"></div>
+                      </div>
+                      <div class="item-right">
+                          <div class="fc-button-group">
+							  <button type="button" class="unitview year-button btn btn-white" value="4">Years</button>
+                              <button type="button" class="unitview month-button btn btn-white" value="3">Months</button>
+                              <button type="button" class="unitview agendaWeek-button btn btn-white" value="2">Weeks</button>
+                              <button type="button" class="unitview agendaDay-button btn btn-white active" value="1">Days</button>
+                          </div>
+                      </div>                      
+                      <div class="clear"></div>
+                  </div>
+				<div class="chart">
+					<div class="cnt-center type-chart">
+                        <button type="button" class="type-col btn active btn-white chartType" value="1">Columns</button>
+                        <button type="button" class="type-line btn btn-white chartType" value="2">Lines</button>
+                     </div>
+	
+					<div id="tabs-1" class="cnt-center">
+						<div id="chart" style="height:280px; width:90%;"></div>
+						<div class="btn-group cnt-right btn-export">
+							<input type="button" value="Export CSV" class="btn btn-grey" id="btnExport"/>
+						</div>
+					</div>
+				</div>
+				
+			</f:form>
+		</div>
+		
+		<br></br>
+		<div id="tabs-333">
+		<div id="tblApp">
+
+			<table style="width:100%" class="listData display" id="tbData">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>App Name</th>
+						<th>Type</th>
+						<th>Release Date</th>
+						<th>Number of Install</th>
+						<th>Revenue</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div id="tblItem">
+			<table style="width:100%" class="listData display" id="tbItem">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Item Name</th>
+						<th>Bought Items</th>
+						<th>Revenue</th>
+					</tr>
+				</thead>
+			</table>
+		</div>				
+		</div>
+		
+		<div>
+			<j:forEach items="${it.reportStatisticDTO.lineChartList}" var="i">
+				<p>${i}</p>
+			</j:forEach>
+		</div>
+		
+		<div>${it.appLineChart}</div>
+
+		<script type="text/javascript">
+
+			jQuery(document).ready(function(){
+				jQuery("#tabs").tabs();
+				jQuery('#tbData_wrapper').appendTo('#tabs-3');
+			});
+
+			jQuery( "form[name='frmSale']" ).submit(function() {
+				jQuery('#appId').val(jQuery('#selectedApp').val());
+			});
+		</script>
+
+		<div id="backTop">
+			<a href="#top">
+				<img src="${url}/img/back_on_top.png" alt="Back To Top"/>
+			</a>
+		</div>
+	</l:main-panel>
+ </l:layout>	
+</j:jelly>

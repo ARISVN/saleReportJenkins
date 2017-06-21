@@ -1,0 +1,277 @@
+.sale-report-bl  {
+	display: block;
+	width: 80%;
+}
+
+.bl-row {
+	width: 100%;
+	margin-bottom: 10px;
+	min-height: 50px;
+}
+
+.bl-row-custom {
+	min-height: auto;
+}
+
+.sale-report-bl .half-block {
+	width: 45%;
+	margin-right: 0;
+}
+
+.sale-report-bl .half-block:first-child {
+	margin-right: 4%;
+}
+
+.sale-report-bl .half-block:last-child {
+	margin-left: 4%;
+}
+
+.half-block .label {
+	width: 30%;
+}
+
+.half-block .bl-item {
+	width: 47%;
+}
+
+.half-block select {
+	width: 100%;
+}
+
+.sm-block {
+	width: 47%;
+}
+
+.date {
+	width: 47%;
+	position: relative;
+}
+
+.two-block .date:first-child {
+	margin-right: 4%;
+}
+
+.mid-bl {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.mode-time {
+	position: relative;
+}
+
+.btn-group {
+	margin-top: 50px;
+	margin-right: 1.4%;
+}
+
+.btn-chart {
+	margin-top: 20px;
+}
+
+.btn-export {
+	margin-top: 20px;
+}
+
+.btn-group input[type="button"] {
+	margin-right: 10px;
+}
+
+.bl-nameApp label {
+	margin-right: 8px;
+}
+
+.bl-nameApp span.text-red {
+	margin-left: -8px;
+}
+
+.bl-block {
+	margin-bottom: 15px;
+	margin-top: 25px;
+}
+/*custom jquery ui*/
+
+.ui-widget-header {
+	background: transparent !important;
+	border-color: transparent !important;
+}
+
+.ui-corner-all {
+	border-radius: 0 !important;
+}
+
+fieldset.ui-widget-content {
+	border: 2px groove threedface !important;
+}
+
+#tabs {
+	margin-top: 30px;
+}
+
+/*custom select box*/
+.ms-choice {
+	height: 30px;
+	line-height: auto;
+	border: 1px solid #5e5b5b;
+	border-radius: 3px;
+}
+
+.ms-choice > span {
+	top: 3px;
+}
+
+.toolbar {
+	margin-top: 20px;
+}
+
+.toolbar .btn,
+.type-chart .btn {
+	margin-left: 5px;
+}
+
+.toolbar .prev-button,
+.type-chart .type-col {
+	margin-left: 0;
+}
+
+#btnExport {
+	position: relative;
+	right: 50px;
+}
+
+#backTop {
+	right: 0;
+}
+
+#backTop img {
+	width: 50px;
+}
+
+.sale-report-bl .middle-block-date:last-child {
+	margin-left: 0;
+}
+
+.sale-report-bl .middle-block-date:first-child {
+	margin-right: 0;
+}
+
+table.jqplot-table-legend {
+	top: -50px !important;
+	/*right: -80px !important;*/
+	width: 11.5%;
+}
+
+input[type="button"] {
+	width: auto;
+}
+
+input.datetimepicker {
+	width: 100%;
+}
+
+.item-app {
+	width: 100%;
+}
+
+.item-app .label {
+	width: 13.5%;
+	margin-right: 1.5%;
+}
+
+.item-app .mode-name {
+	width: 85%;
+}
+
+.text-noti {
+	display: none;
+}
+
+.sale-report-bl .bl-app-name {
+	width: 100%;
+	margin: 0 !important;
+}
+
+.half-block .ttl-app-name {
+	width: 13.5%;
+	margin-right: 1.5%;
+}
+
+.info-app-name {
+	width: 85%;
+}
+
+.bl-hidden {
+	display: none;
+}
+
+#btnChart {
+	margin-right: 10px;
+}
+
+.fc-button-group .btn-disable:hover {
+	cursor: auto;
+	background: #fff;
+	color: rgb(128, 128, 128);
+}
+
+@media (max-width: 1650px) {
+	#chart1 {
+		width: 92% !important;
+	}
+}
+
+@media (max-width: 1500px) {
+	.sale-report-bl {
+		width: 85%;
+	}
+}
+
+@media (max-width: 1350px) {
+	.sale-report-bl {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1200px) {
+	#chart1 {
+		width: 90% !important;
+	}
+}
+
+@media (max-width: 1000px) {
+	.sale-report-bl .half-block {
+		width: 100%;
+		margin-bottom: 30px;
+		display: block;
+		margin-right: 0;
+	}
+
+	.sale-report-bl .half-block:last-child {
+		margin-left: 0;
+	}
+
+	.bl-nameApp .half-block {
+		display: inline-block;
+		width: 45%;
+	}
+
+	.bl-nameApp .sm-block {
+		width: 100%;
+	}
+
+	#chart1 {
+		width: 87% !important;
+	}
+}
+
+@media (max-width: 860px) {
+	#chart1 {
+		width: 85% !important;
+	}
+}
+
+@media (max-width: 790px) {
+	#chart1 {
+		width: 83% !important;
+	}
+}

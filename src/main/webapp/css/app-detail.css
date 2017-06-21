@@ -1,0 +1,33 @@
+.popup .label {
+    width: 16%;
+}
+
+form .item {
+    height: 35px;
+}
+
+#infoPopup .bl-item {
+    width: 81%;
+}
+
+.fancybox-wrap {
+    width: 600px !important;
+}
+
+@media (max-width: 1800px) {
+    #detailApp .bl-block-half {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1300px) and (min-width: 750px){
+    #detailApp .bl-block-half {
+        width: 85%;
+    }
+}
+
+@media (max-width: 1080px) and (min-width: 750px){
+    #detailApp .bl-block-half {
+        width: 92%;
+    }
+}

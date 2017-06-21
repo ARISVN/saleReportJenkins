@@ -1,0 +1,124 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
+
+	<j:set var="url" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+
+    <link rel="stylesheet" type="text/css" href="${url}/component/fancy_box/jquery.fancybox.css"/>
+    <link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+    <link rel="stylesheet" type="text/css" href="${url}/component/fancy_box/jquery.fancybox.css"/>
+    <link rel="stylesheet" type="text/css" href="${url}/css/common.css"/>
+    <script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.js"></script>
+	<script src="${url}/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/component/jquery.validate.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/component/fancy_box/jquery.fancybox.js"></script>
+    <script type="text/javascript" language="javascript" src="${url}/component/fancy_box/jquery.fancybox.pack.js"></script>
+
+<l:layout title="Jenkins Plugin" norefresh="true">
+    <!--Load side bar-->
+    <j:include uri="sidebar.jelly"/>
+	<l:main-panel>
+			<input type="hidden" id= "totalItemPerPage" value="${it.totalItemPerPage}"/>
+			<form id="getting-data-form" name="getting-data-form" action="gettingData" method="POST">
+            	<input type="hidden" name="data" id="params"/>
+            </form>
+		<div class="block">
+              <form>
+                <div class="panel">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Application Management</h3>
+                  </div>
+                  <div class="panel-body">
+                      <div class="bl-block">
+                        <input id="btn-getData" class="btn btn-grey" type="button" value="Get Data" />
+                        <table style="width:100%" id="application-management-datatable" class="display">
+                            <thead>
+                                 <tr>
+                                    <th><input type="checkbox" name="select_all" value="1" id="example-select-all"/></th>
+                                    <th>No</th>
+                                    <th>Application Name</th>
+                                    <th>Type</th>
+                                    <th>Release Date</th>
+                                    <th>Statistic</th>
+                                    <th>Edit</th>
+                                    <th>Add Item</th>
+                                    <th>Update Status</th>
+                                    <th>App Name</th>
+                                    <th>Type</th>
+                                  </tr>
+                            </thead>
+                        </table>
+                      </div>
+                  </div>
+                </div>
+              </form>
+              <div id="editApp" class="popup">
+               <div class="block" id="createApp">
+                <form id="edit-form">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Application Management</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="bl-block">
+                              <div class="item middle-block">
+                                <div class="label">
+                                  <label for="appName">Application Name<span class="text-red">(*)</span></label>
+                                </div>
+                                <div class="bl-item">
+                                  <input name="appName" id="appNameInput" type="text" value="MapPiece" />
+                                </div>
+                              </div>
+                              <div class="item middle-block">
+                                <div class="label">
+                                  <label for="resetDate">Release Date<span class="text-red">(*)</span></label>
+                                </div>
+                                <div class="bl-item">
+                                  <input class="datetimepicker" id="appReleaseDate" name="releaseDate" type="text" value="2015/11/20"/>
+                                </div>
+                              </div>
+                              <div class="item middle-block">
+                                <div class="label">
+                                  <label for="packages">Packages Name or SKU<span class="text-red">(*)</span></label>
+                                </div>
+                                <div class="bl-item">
+                                  <input name="packages" id="packagesInput" type="text" value=""/>
+                                </div>
+                              </div>
+                              <div class="item middle-block item-radio">
+                                <div class="label">
+                                  <label>Type<span class="text-red">(*)</span></label>
+                                </div>
+                                <div class="bl-item">
+                                  <input name="type" type="radio" value="2" class="first"/>IOS
+                                  <input name="type" type="radio" value="1"/>Android
+                                </div>
+                              </div>
+                              <div class="item cnt-center item-btn-group">
+                                 <input name="appId" id="appIdInput" class="bl-hide" type="text" value="1" />
+                                 <input type="submit" id="btnSave" value="Save" class="btn btn-grey btn-similar" />
+                                 <input type="button" value="Delete" id="btnDelete"  class="btn btn-grey btn-similar"/>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+         </div>
+        <!-- datatable -->
+        <link rel="stylesheet" type="text/css" href="${url}/datatables/css/jquery.dataTables.min.css"/>
+        <script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.dataTables.min.js"></script>
+        <!-- loadingBar -->
+        <link rel="stylesheet" type="text/css" href="${url}/component/loadingBar/loadingBar.css"/>
+        <script type="text/javascript" language="javascript" src="${url}/component/loadingBar/loadingBar.js"></script>
+        <!--notification-->
+        <script type="text/javascript" language="javascript" src="${url}/component/notification/notify.js"></script>
+        <!-- script common -->
+        <script type="text/javascript" language="javascript" src="${url}/js/script-menu.js"></script>
+        <script src="${url}/js/ApplicationManagement/management.js"></script>
+	</l:main-panel>	
+ </l:layout>	
+</j:jelly>

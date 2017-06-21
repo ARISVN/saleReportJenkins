@@ -1,0 +1,150 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core">
+<html><body>
+ <j:set var="curl" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+ <link rel="stylesheet" type="text/css"
+	  href="${curl}/js/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css"
+	  href="${curl}/datatables/css/dataTables.bootstrap.css"/>
+<script type="text/javascript" language="javascript"
+		src="${curl}/datatables/js/jquery.js"></script>
+<script type="text/javascript" language="javascript"
+		src="${curl}/datatables/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript"
+		src="${curl}/datatables/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" language="javascript"
+		src="${curl}/component/jquery.validate.js"></script>
+<link rel="stylesheet" href="${curl}/css/styles-menu.css" type="text/css"/>
+
+      
+<link rel="stylesheet" href="${curl}/css/common.css" type="text/css"/>
+   <div id="msg" >${it.name}</div>
+   <div id="main-panel">
+    <div class="block" id="createApp">
+       <form id="application-management-form">
+          <fieldset>
+          aaaaaaaaaaaa
+             <legend>Add Item</legend>
+             <div class="bl-block bl-block-half">
+                <div class="item">
+                   <div class="label item-left">
+                      <label for="appName">App<span class="text-red">*</span></label>
+                   </div>
+                   <div class="bl-item item-left">
+                      <select name="appName" type="text" placeholder="Select app" >
+                         <option>Select app</option>
+                      </select>
+                   </div>
+                   <div class="clear"></div>
+                </div>
+                <div class="item">
+                   <div class="label item-left">
+                      <label>Type<span class="text-red">*</span></label>
+                   </div>
+                   <div class="bl-item item-left">
+                      <input class="first" name="type" type="radio" value="IOS" />IOS
+                      <input name="type" type="radio" value="Android" />Android
+                   </div>
+                   <div class="clear"></div>
+                </div>
+                <div class="item">
+                   <div class="label item-left">
+                      <label for="packages">Packages Name or SKU<span class="text-red">*</span></label>
+                   </div>
+                   <div class="bl-item item-left">
+                      <input name="packages" type="text" />
+                   </div>
+                   <div class="clear"></div>
+                </div>
+                <div class="item">
+                   <div class="label item-left">
+                      <label for="itemName">Item name<span class="text-red">*</span></label>
+                   </div>
+                   <div class="bl-item item-left">
+                      <input name="itemName" type="text" />
+                   </div>
+                   <div class="clear"></div>
+                </div>
+                <div class="item cnt-center">
+                   <input type="button" value="Reset" class="btn-grey" />
+                   <input type="submit" value="Create"  class="btn-grey button"/>
+                </div>
+             </div>
+          </fieldset>
+       </form>
+    </div>
+  </div>
+   
+   <table id="application-management-datatable" class="table table-striped table-bordered"
+							cellspacing="0" width="100%">
+		<thead>
+            <tr>
+            	<th>No</th>
+            	<th>Name</th>
+            	<th>Number</th>
+            </tr>
+        </thead> 
+	</table>
+  <script>
+var oTable;
+$(document).ready(function() {
+	$('#application-management-form').validate({
+		errorElement: "span",
+		errorPlacement: function(error, element) { 
+		    error.insertAfter(element);
+		 },
+		errorClass:'text-danger',
+		rules : {
+			appName : {
+				required : true,
+				minlength : 5
+			},
+			packages : {
+				required : true,
+				minlength : 5
+			},
+			itemName : {
+				required : true,
+				minlength : 5
+			}
+		},
+		messages : {
+			appName : {
+				required : "Can't not Blank!",
+				minlength : "Min length 5 character!"
+			},
+			packages : {
+				required : "Can't not Blank!",
+				minlength : "Min length 5 character!"
+			},
+			itemName : {
+				required : "Can't not Blank!",
+				minlength : "Min length 5 character!"
+			}
+		}
+	});
+	oTable = $('#application-management-datatable').DataTable({
+			"bProcessing" : true,
+			"bServerSide" : true,
+			"sort" : "position",
+			"bStateSave" : false,
+			"ordering" : false,
+			"iDisplayLength" : 10,
+			"iDisplayStart" : 0,
+			"sAjaxSource" : "data",
+			"columns" : [
+					{
+						"mData" : "code"
+					},
+					{
+						"mData" : "name"
+					},
+					{
+						"mData" : "number"
+					}
+			]
+		});
+});
+</script>
+</body></html>
+</j:jelly>

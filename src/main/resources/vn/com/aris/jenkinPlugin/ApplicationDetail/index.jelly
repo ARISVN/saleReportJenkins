@@ -1,0 +1,148 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
+
+	<j:set var="url" value="/jenkins${it.resourcePath}/plugin/jenkinPlugin"></j:set>
+
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="${url}/css/multiple-select.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/sale-report.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/datetimepicker/jquery.datetimepicker.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/component/fancy_box/jquery.fancybox.css"/>
+    <link rel="stylesheet" type="text/css" href="${url}/css/styles-menu.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="${url}/css/app-detail.css"/>
+
+	<style type="text/css">
+        .fancybox-margin {
+            margin-right:0px;
+        }
+    </style>
+	<script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.js"></script>
+	<script src="${url}/js/jquery-ui.min.js"></script>
+	<!-- datatable -->
+    <link rel="stylesheet" type="text/css" href="${url}/datatables/css/jquery.dataTables.min.css"/>
+    <script type="text/javascript" language="javascript" src="${url}/datatables/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${url}/component/jquery.validate.js"></script>
+	
+	<script type="text/javascript" src="${url}/component/fancy_box/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="${url}/component/fancy_box/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="${url}/js/script-menu.js"></script>
+	
+<l:layout title="Jenkins Plugin" norefresh="true">
+    <!--Load side bar-->
+    <j:include uri="sidebar.jelly"/>
+	<l:main-panel>
+		<div class="block" id="detailApp">
+               <form class="mg-bottom">
+                   <div class="panel">
+                     <div class="panel-heading">
+                         <h3 class="panel-title">Application Information</h3>
+                     </div>
+                     <div class="panel-body">
+                         <div class="bl-block bl-block-half">
+                            <div class="item middle-block">
+                              <div class="label">
+                                <label class="title">Application Name:</label>
+                              </div>
+                              <div class="bl-item">
+                                <label name="appName" class="detail">${it.application.appName}</label>
+                              </div>
+                            </div>
+                            <div class="item middle-block">
+                              <div class="label">
+                                <label class="title">Packages Name or SKU:</label>
+                              </div>
+                              <div class="bl-item">
+                                <label name="appName" class="detail">${it.application.appCode}</label>
+                              </div>
+                            </div>
+                            <div class="item middle-block">
+                              <div class="label">
+                                <label class="title">Type:</label>
+                              </div>
+                              <div class="bl-item">
+                                <label name="appType" class="detail">${it.application.typeStr}</label>
+                              </div>
+                            </div>
+                            <div class="item middle-block">
+                              <div class="label">
+                                <label class="title">Total Revenue:</label>
+                              </div>
+                              <div class="bl-item">
+                                <label name="revenue" class="detail">${it.application.revenue}</label>
+                              </div>
+                            </div>
+                            <div class="item middle-block">
+                              <div class="label">
+                                <label class="title">Total Revenue Items:</label>
+                              </div>
+                              <div class="bl-item">
+                                <label name="items" class="detail">${it.application.revenueItem}</label>
+                              </div>
+                               <div class="bl-item">
+                                <label name="items" class="appIdHide">${it.application.appId}</label>
+                              </div>
+                            </div>
+                         </div>
+                     </div>
+                  </div>
+               <div><input type="hidden" name="json" value="init"></input></div></form>
+
+               <table style="width:100%" id="application-detail-datatable" class="display">
+                 <thead>
+	                 <tr>
+	                   <th>No</th>
+	                   <th>Item Name</th>
+	                   <th>Item Code</th>      	                   
+	                   <th>Unit</th>
+	                   <th>Revenue</th>
+	                   <th>Action</th>
+	                 </tr>
+	             </thead> 
+	             <tbody>
+                 </tbody>
+              </table>
+               <div id="infoPopup" class="popup">
+                  <form>
+                   <div class="panel">
+                       <div class="panel-heading">
+                          <h3 class="panel-title">Item Information</h3>
+                       </div>
+                       <div class="panel-body">
+                           <div class="bl-block">
+                              <div class="item middle-block">
+                                <div class="label">
+                                  <label for="appName">Item Name</label>
+                                </div>
+                                <div class="bl-item">
+                                  <input name="appName" type="text" value="KidsMaths full version" id="appNameInput"></input>
+                                  <label id="itemNameErr" style="color: red;">Item name not empty!</label>
+                                </div>
+                              </div>
+                              <div class="item middle-block">
+                                <div class="label">
+                                  <label>Item Code</label>
+                                </div>
+                                <div class="bl-item">
+                                  <label class="detail">com.arisvn.kidsmath.fullversion</label>
+                                </div>
+                                <label id="idItem" style="display: none;">com.arisvn.kidsmath.fullversion</label>
+                                <label id="itemNameHide" style="display: none;"></label>
+                              </div>
+                              <div class="item cnt-center">
+                                 <input type="button" value="Save" class="btn btn-grey btn-similar" id="btnSave"></input>
+                                 <input type="button" value="Delete" class="btn btn-grey btn-similar" id="btnDelete"></input>
+                                 <input type="button" value="Reset" class="btn btn-grey btn-similar" id="btnReset"></input>
+                              </div>
+                           </div>
+                       </div>
+                    </div>
+                 <div><input type="hidden" name="json" value="init"></input></div></form>
+               </div>
+            </div>
+            <!--notification-->
+            <script type="text/javascript" language="javascript" src="${url}/component/notification/notify.js"></script>
+            <script src="${url}/js/ApplicationDetail/application-detail.js"></script>
+	</l:main-panel>	
+ </l:layout>	
+</j:jelly>
